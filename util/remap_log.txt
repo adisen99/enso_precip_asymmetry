@@ -1,0 +1,5 @@
+cdo    remapcon (Abort): Source grid cell corner coordinates missing!
+Finished 4/35 : BCC-CSM2-MR -> Variant found and saved
+
+cdo    remapcon (Abort): Source grid cell corner coordinates missing!
+Finished 5/35 : BCC-ESM1 -> Variant found and saved
