@@ -32,7 +32,7 @@ def calc_anom(
     input_da,
     base_start_date: str = "1960-01-01",
     base_end_date: str = "1990-01-01",
-    start_year: str = "1891-01-01",
+    start_year: str = "1900-01-01",
     end_year: str = "2015-01-01",
     # var = "Temperature",
     # units = 'K'
@@ -51,7 +51,7 @@ def calc_anom(
 
 
 def preproc(model_list):
-    variants_used = ['r1i1p1f1', 'r1i1p1f2']
+    variants_used = ['r1i1p1f1', 'r1i1p1f3']
     for model in model_list:
         try:
             sst = xr.open_mfdataset(f'/g/data/ob22/as8561/data/regridded_models/{model}_tos_{variants_used[0]}/*.nc')#.load()
@@ -73,7 +73,7 @@ def preproc(model_list):
         # sst_anom_resid = detrend_separate(sst_anom)
         
         # load the data into memory
-        precip_mon = (precip.pr*86400*30).sel(time = slice('1891-01-01', '2015-01-01')).load()
+        precip_mon = (precip.pr*86400*30).sel(time = slice('1900-01-01', '2015-01-01')).load()
         precip_mon['time'] = nino34['time']
         dmi = dmi.load()
         # rename stuff

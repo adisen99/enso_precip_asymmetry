@@ -1,3 +1,4 @@
 #!/bin/sh
 
 for i in $(ls $1); do cdo remapcon,$3 $1/${i} $2/${i}; done
+# for i in $(ls $1); do cdo remapbil,$3 $1/${i} $2/${i}; done
