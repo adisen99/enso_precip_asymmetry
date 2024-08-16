@@ -9,6 +9,7 @@ def main(mod_name, var_name, outgrid_file, base_loc):
     save_base_location = '/g/data/ob22/as8561/data/regridded_large_ensemble/'
     # access the model csv file
     df = pd.read_csv(base_loc + '/data/model/' + mod_name + '_' + var_name + '.csv')
+    df = df.where(df['tdate'] == 20141231)
     # get the paths and variant for the model
     paths = df.dropna()['path'].to_numpy()
     variants = df.dropna()['variant_label'].to_numpy()
@@ -35,8 +36,8 @@ if __name__ == "__main__":
     # model_list = ['AWI-ESM-1-1-LR', 'CESM2-FV2', 'CESM2-WACCM-FV2', 'CIESM', 'CMCC-CM2-HR4', 'E3SM-1-0', 'E3SM-1-1-ECA', 'EC-Earth3-Veg', 'FGOALS-f3-L', 'FGOALS-g3', \
                 #   'GISS-E2-1-G-CC', 'HadGEM3-GC31-LL', 'HadGEM3-GC31-MM', 'MPI-ESM-1-2-HAM']
     # model_list = ['FGOALS-f3-L', 'FGOALS-g3'] # bilinear
-    mod_name = 'CanESM5'
-    var_name = 'tos'
-    outgrid = './outgrid_sst.txt'
+    mod_name = 'NorCPM1'
+    var_name = 'pr'
+    outgrid = './outgrid_precip.txt'
     base_loc = sys.argv[1]
     main(mod_name, var_name, outgrid, base_loc)
